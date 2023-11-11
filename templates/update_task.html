@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/update.css') }}">
+<header>
+  Todo管理
+</header>
+
+<a href="{{url_for('task_list')}}">タスク一覧へ戻る</a>
+<div>
+  <h1>タスク更新</h1>
+  <form method="POST">
+    {{form.csrf_token}}
+    {{form.id(value=task.id)}}
+    {{form.subject.label}}{{form.subject(value=task.subject)}}<br>
+    {{form.deadline.label}}{{form.deadline(value=task.deadline)}}<br>
+    {{form.comment.label}}{{form.comment(value=task.comment)}}<br>
+    {{form.submit()}}
+  </form>
+</div>
+{% endblock %}
